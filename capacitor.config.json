@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "demoGmail",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
