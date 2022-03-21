@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from  '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mail',
@@ -9,7 +10,7 @@ import { HttpClient } from  '@angular/common/http';
 export class MailPage implements OnInit {
 	emails = [];
 
-	constructor(private http: HttpClient) { }
+	constructor(private http: HttpClient, private router: Router) { }
 
 	ngOnInit() {
 		this.http.get<any[]>("./assets/data.json").subscribe(res => {
@@ -37,8 +38,18 @@ export class MailPage implements OnInit {
 		return '#' + '00000'.substring(0, 6 - c.length) + c;
 	}
 
-	openAccount() {
+	openDetails(id) {
+		this.router.navigate(['tabs', 'mail', id])
+	}
 
+	openAccount(ev) {
+		
+	}
+
+	doRefresh(ev) {
+		setTimeout( () => {
+			ev.target.complete();
+		}, 2000);
 	}
 
 }
