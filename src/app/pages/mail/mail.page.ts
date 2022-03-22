@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from  '@angular/common/http';
 import { Router } from '@angular/router';
+import { PopoverController } from '@ionic/angular';
+import { AccountPage } from '../account/account.page';
 
 @Component({
   selector: 'app-mail',
@@ -10,7 +12,7 @@ import { Router } from '@angular/router';
 export class MailPage implements OnInit {
 	emails = [];
 
-	constructor(private http: HttpClient, private router: Router) { }
+	constructor(private http: HttpClient, private router: Router, private popoverCtrl: PopoverController) { }
 
 	ngOnInit() {
 		this.http.get<any[]>("./assets/data.json").subscribe(res => {
@@ -42,7 +44,14 @@ export class MailPage implements OnInit {
 		this.router.navigate(['tabs', 'mail', id])
 	}
 
-	openAccount(ev) {
+	async openAccount(ev) {
+		const popover = await this.popoverCtrl.create({
+			component: AccountPage,
+			event: ev,
+			cssClass: 'custom-popover'
+		  });
+		 
+		  await popover.present();
 		
 	}
 
