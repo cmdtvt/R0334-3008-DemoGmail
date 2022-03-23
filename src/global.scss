@@ -30,11 +30,13 @@
 @import "~@ionic/angular/css/flex-utils.css";
 .custom-popover {
     --ion-backdrop-opacity: 0.6;
+    --min-width: 80%; //popover-content doesn't work?
+
     .popover-arrow {
         display: none;
     }
-    .popover-content {
-        left: 10px !important;
-        width: calc(100% - 20px);
-    }
+    // .popover-content {
+    //     left: 10px;
+    //     width: calc(100% - 10px);
+    // }
 }
